@@ -4,7 +4,8 @@
 #include <stdlib.h>
 
 using namespace std;
-
+/*prototype*/
+int printString(char* ST,_int64 );
 
 /*
 UK fast algorithm for counting the line length
@@ -17,7 +18,7 @@ _int64 countLeng(char* ST) {
 	return n;
 }
 
-/*
+/* this is a shit
 int printString(char* ST) {
 char* UM = ST;
 while (*UM != '\0') {
@@ -25,7 +26,7 @@ while (*UM != '\0') {
 cout << *UM;
 };
 return 0;
-}*/
+}/**/
 
 /*
 UK this function is encode text
@@ -36,10 +37,12 @@ FR cette fonction est encodage du texte
 DE Diese Funktion verschl?sselt Text
 */
 char* encoder(char* textPlain, //Plain text/незашифрованный текст
-	unsigned int textLeng, //text's length/длина текста  
-	char* key, //key/ключ
-	unsigned int keyLeng) { //key's length/длина ключа
+			unsigned int textLeng, //text's length/длина текста  
+			char* key, //key/ключ
+			unsigned int keyLeng) { //key's length/длина ключа
+
 	char* textChiper = (char*)malloc(textLeng + 1);
+
 
 	return textChiper;
 }
