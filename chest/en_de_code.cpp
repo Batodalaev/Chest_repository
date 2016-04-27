@@ -2,7 +2,7 @@
 //libraries
 #include <iostream>
 #include <stdlib.h>
-
+#include "ourLibrary.h"
 using namespace std;
 /*prototype*/
 int printString(char* ST,_int64 );
@@ -11,12 +11,7 @@ int printString(char* ST,_int64 );
 UK fast algorithm for counting the line length
 RU быстрый подсчет длины строки
 */
-_int64 countLeng(char* ST) {
-	char* UM = ST;
-	while (*UM != '\0') ++UM;
-	_int64 n = (UM - ST);
-	return n;
-}
+
 
 /* this is a shit
 int printString(char* ST) {
@@ -63,7 +58,7 @@ int decoder() {
 }
 int main()
 {
-	/*char str[100];
+	char str[100];
 	char key[100];
 	cin >> str;
 	cin >> key;
@@ -75,8 +70,8 @@ int main()
 	cout << keyLeng << endl
 	<< stringLeng << endl
 	<< endl;
-	printString(str);
+	//printString(str);
 	cout << endl;
-	system("pause");*/
+	system("pause");
 	return 0;
 }
