@@ -2,10 +2,33 @@
 //libraries
 #include <iostream>
 #include <stdlib.h>
-//#include "ourLibrary.h"
+
 using namespace std;
 
+/*
+UK fast algorithm for counting the line length
+RU быстрый подсчет длины строки
+*/
+_int64 countLeng(char* ST) {
+	char* UM = ST;
+	while (*UM != '\0') ++UM;
+	_int64 n = (UM - ST);
+	return n;
+}
 
+/* 
+UK print in console
+RU выводит в консоль
+*/
+int printString(char* ST) {
+	char* UM = ST;
+	while (*UM != '\0') {
+		++UM;
+		cout << *UM;
+	};
+	
+	return 0;
+}
 /*
 UK this function is encode text
 RU эта функция шифрует текст
@@ -20,7 +43,9 @@ char* encoder(char* textPlain, //Plain text/незашифрованный текст
 	unsigned int keyLeng) { //key's length/длина ключа
 
 	char* textChiper = (char*)malloc(textLeng + 1);
+	for (int i = 0; i < textLeng; i++) {
 
+	}
 
 	return textChiper;// return pointer/возвращает указатель
 }
@@ -43,7 +68,7 @@ int decoder() {
 }
 
 int main()
-{/*
+{
  char str[100];
  char key[100];
  cin >> str;
@@ -56,8 +81,8 @@ int main()
  cout << keyLeng << endl
  << stringLeng << endl
  << endl;
- //printString(str);
+ printString(str);
  cout << endl;
- system("pause");*/
+ system("pause");
 	return 0;
 }
