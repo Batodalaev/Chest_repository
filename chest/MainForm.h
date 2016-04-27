@@ -35,6 +35,8 @@ namespace chest {
 			}
 		}
 
+	protected:
+
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -57,9 +59,11 @@ namespace chest {
 			this->ClientSize = System::Drawing::Size(605, 261);
 			this->Name = L"MainForm";
 			this->Text = L"MainForm";
+			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
+
 	};
 }
