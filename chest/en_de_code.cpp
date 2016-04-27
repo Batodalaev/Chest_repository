@@ -4,60 +4,9 @@
 #include <stdlib.h>
 #include "ourLibrary.h"
 using namespace std;
-/*prototype*/
-int printString(char* ST,_int64 );
 
-/*
-UK fast algorithm for counting the line length
-RU быстрый подсчет длины строки
-*/
-
-
-/* this is a shit
-int printString(char* ST) {
-char* UM = ST;
-while (*UM != '\0') {
-++UM;
-cout << *UM;
-};
-return 0;
-}/**/
-
-/*
-UK this function is encode text
-RU эта функция шифрует текст
-
-the next texts is just to fun->
-FR cette fonction est encodage du texte
-DE Diese Funktion verschl?sselt Text
-*/
-char* encoder(char* textPlain, //Plain text/незашифрованный текст
-			unsigned int textLeng, //text's length/длина текста  
-			char* key, //key/ключ
-			unsigned int keyLeng) { //key's length/длина ключа
-
-	char* textChiper = (char*)malloc(textLeng + 1);
-
-
-	return textChiper;
-}
-
-/*
-UK this function is decode text
-RU эта функция дешифрует текст
-
-the next texts is just to fun->
-FR cette fonction est decodage du texte
-DE Diese Funktion entschl?sselt Text
-
-*/
-int decoder() {
-
-
-	return 0;//требуются правки/require edit
-}
 int main()
-{
+{/*
 	char str[100];
 	char key[100];
 	cin >> str;
@@ -72,6 +21,6 @@ int main()
 	<< endl;
 	//printString(str);
 	cout << endl;
-	system("pause");
+	system("pause");*/
 	return 0;
 }
