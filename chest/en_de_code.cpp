@@ -10,10 +10,10 @@ using namespace std;
 UK fast algorithm for counting the line length
 RU быстрый подсчет длины строки
 */
-int countLeng(char* ST) {
+_int64 countLeng(char* ST) {
 	char* UM = ST;
 	while (*UM != '\0') ++UM;
-	int n = (UM - ST);
+	_int64 n = (UM - ST);
 	return n;
 }
 
