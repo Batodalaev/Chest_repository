@@ -23,8 +23,8 @@ RU выводит в консоль
 int printString(char* ST) {
 	char* UM = ST;
 	while (*UM != '\0') {
-		++UM;
 		cout << *UM;
+		++UM;
 	};
 	
 	return 0;
@@ -43,10 +43,17 @@ char* encoder(char* textPlain, //Plain text/незашифрованный текст
 	unsigned int keyLeng) { //key's length/длина ключа
 
 	char* textChiper = (char*)malloc(textLeng + 1);
+
+	int turnKey = keyLeng% 26;
+
 	for (int i = 0; i < textLeng; i++) {
-
+		*(textChiper+i) = *(textPlain+i)+turnKey;
+		if (*(textChiper+i) > 'z') {
+			*(textChiper+i) -= 26;
+		}
+		
 	}
-
+	*(textChiper+textLeng) = '\0';
 	return textChiper;// return pointer/возвращает указатель
 }
 
@@ -71,18 +78,24 @@ int main()
 {
  char str[100];
  char key[100];
- cin >> str;
- cin >> key;
- unsigned int stringLeng = countLeng(str);
- unsigned int keyLeng = countLeng(key);
+ unsigned int stringLeng;
+ unsigned int keyLeng;
  char* chiper;
+
+ cout << "only small english letters" << endl;
+ cin >> str;
+ cin >> keyLeng;//key
+
+ stringLeng = countLeng(str);
+ //keyLeng = countLeng(key);
  chiper=encoder(str,stringLeng,key,keyLeng);
 
  cout << keyLeng << endl
  << stringLeng << endl
  << endl;
- printString(str);
+ printString(chiper);
  cout << endl;
+
  system("pause");
 	return 0;
 }
