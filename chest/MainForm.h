@@ -76,6 +76,7 @@ namespace chest {
 
 		private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) 
 		{
+			int s = 1;
 			Close();
 		}
 	};
