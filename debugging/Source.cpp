@@ -38,14 +38,13 @@ FR cette fonction est encodage du texte
 DE Diese Funktion verschlusselt Text
 */
 char* encoder(char* textPlain, //Plain text/незашифрованный текст
-	unsigned int textLeng, //text's length/длина текста  
-	char* key, //key/ключ
-	unsigned int keyLeng) { //key's length/длина ключа
+	char* key) { //key/ключ
 
-	char* textChiper = (char*)malloc(textLeng + 1);
-
+	_int64 textLeng = countLeng(textPlain);//text's length/длина текста  
+	_int64 keyLeng = countLeng(key);//key's length/длина ключа
+	char* textChiper = (char*)malloc(textLeng + 1);// encrypted text/зашифрованный текст
+		
 	int turnKey = keyLeng% 26;
-
 	for (unsigned int i = 0; i < textLeng; i++) {
 		*(textChiper+i) = *(textPlain+i)+turnKey;
 		if (*(textChiper+i) > 'z') {
@@ -66,34 +65,47 @@ RU эта функция дешифрует текст
 the next texts is just to fun->
 FR cette fonction est decodage du texte
 DE Diese Funktion entschlusselt Text
-
 */
-int decoder() {
+char* decoder(char* textChiper, //encrypted text/зашифрованный текст
+	char* key) { //key/ключ
 
+	_int64 textLeng = countLeng(textChiper);//text's length/длина текста  
+	_int64 keyLeng = countLeng(key);//key's length/длина ключа
+	char* textPlain = (char*)malloc(textLeng + 1);// encrypted text/зашифрованный текст
 
-	return 0;//требуются правки/require edit
+	int turnKey = keyLeng % 26;
+	for (unsigned int i = 0; i < textLeng; i++) {
+		*(textPlain + i) = *(textChiper + i) - turnKey;
+		if (*(textPlain + i) < 'a') {
+			*(textPlain + i) += 26;
+		}
+	}
+	
+	*(textPlain + textLeng) = '\0';
+	return textPlain;//требуются правки/require edit
 }
 
 int main()
 {
- char str[100];
+ char textInput[100];
  char key[100];
- _int64 stringLeng;
- unsigned int keyLeng;
  char* chiper;
+char*  unchiper;
 
- cout << "only small english letters" << endl;
- cin >> str;
- cin >> keyLeng;//key
+ cout << "Please, intput only small english letters" << endl
+	 <<"Please, input text, which you want to encode:"<< endl;
+ cin >> textInput;
+ cout << "Please, input key:" << endl;
+ cin >> key;
 
-  stringLeng = countLeng(str);
- //keyLeng = countLeng(key);
- chiper=encoder(str,stringLeng,key,keyLeng);
-
- cout << keyLeng << endl
- << stringLeng << endl
- << endl;
+ chiper = encoder(textInput, key);
+ 
+ cout	<< "Encrypted text:";
  printString(chiper);
+ unchiper = decoder(chiper, key);
+ cout	<< endl
+		<< "Decrypted text:";
+ printString(unchiper);
  cout << endl;
 
  system("pause");
