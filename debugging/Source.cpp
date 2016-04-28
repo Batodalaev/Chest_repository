@@ -4,9 +4,12 @@
 using namespace std;
 
 #include <malloc.h>
+
 #include <iostream>
 #include <stdlib.h>
+
 #include "TPBGlib.h"
+
 /*
 UK print in console
 RU вывод в консоль
@@ -36,6 +39,7 @@ int main()
 	cout << "Encrypted text:";
 	printString(chiper);
 	cout << endl;
+
 	unchiper = TPBG::decoderVigener(chiper, key);
 	cout << "Decrypted text:";
 	printString(unchiper);

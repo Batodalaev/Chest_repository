@@ -6,14 +6,12 @@ namespace TPBG
 	// spisok[0]==' '; because 149%149=0
 	static char spisok[] = " 1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZàáâãäå¸æçèéêëìíîïğñòóôõö÷øùúûüışÿÀÁÂÃÄÅ¨ÆÇÈÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞß!@#$%^&*()_ +;:<>,.-=";
 	
-
 	/*
 	UK fast algorithm for counting the line length
 	RU áûñòğûé ïîäñ÷åò äëèíû ñòğîêè
 	*/
 	 _int64 countLeng(char* ST);
-
-
+	 
 	/*
 	UK length of spisok[]
 	RU äëèíà ñïèñêà
@@ -40,4 +38,7 @@ namespace TPBG
 	DE Diese Funktion entschlusselt Text
 	*/
 	char* decoderVigener(char* textChiper, char* key);
+
+
+
 }
