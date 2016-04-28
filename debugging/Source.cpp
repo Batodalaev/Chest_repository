@@ -47,7 +47,7 @@ char* encoder(char* textPlain, //Plain text/незашифрованный текст
 	int turnKey = keyLeng% 26;
 	for (unsigned int i = 0; i < textLeng; i++) {
 		*(textChiper+i) = *(textPlain+i)+turnKey;
-		if (*(textChiper+i) > 'z') {
+		if (*(textChiper+i) > 'Z') {
 			*(textChiper+i) -= 26;
 		}
 		
@@ -76,7 +76,7 @@ char* decoder(char* textChiper, //encrypted text/зашифрованный текст
 	int turnKey = keyLeng % 26;
 	for (unsigned int i = 0; i < textLeng; i++) {
 		*(textPlain + i) = *(textChiper + i) - turnKey;
-		if (*(textPlain + i) < 'a') {
+		if (*(textPlain + i) < 'A') {
 			*(textPlain + i) += 26;
 		}
 	}
@@ -92,7 +92,7 @@ int main()
  char* chiper;
 char*  unchiper;
 
- cout << "Please, intput only small english letters" << endl
+ cout << "Please, intput only big english letters" << endl
 	 <<"Please, input text, which you want to encode:"<< endl;
  cin >> textInput;
  cout << "Please, input key:" << endl;
