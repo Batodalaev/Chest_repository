@@ -46,7 +46,7 @@ char* encoder(char* textPlain, //Plain text/незашифрованный текст
 
 	int turnKey = keyLeng% 26;
 
-	for (int i = 0; i < textLeng; i++) {
+	for (unsigned int i = 0; i < textLeng; i++) {
 		*(textChiper+i) = *(textPlain+i)+turnKey;
 		if (*(textChiper+i) > 'z') {
 			*(textChiper+i) -= 26;
@@ -78,7 +78,7 @@ int main()
 {
  char str[100];
  char key[100];
- unsigned int stringLeng;
+ _int64 stringLeng;
  unsigned int keyLeng;
  char* chiper;
 
@@ -86,7 +86,7 @@ int main()
  cin >> str;
  cin >> keyLeng;//key
 
- stringLeng = countLeng(str);
+  stringLeng = countLeng(str);
  //keyLeng = countLeng(key);
  chiper=encoder(str,stringLeng,key,keyLeng);
 
