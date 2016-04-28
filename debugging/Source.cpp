@@ -1,7 +1,6 @@
 //it is a first file in repozitory(may be)
 //libraries
 #include <malloc.h>
-
 using namespace std;
 
 _int64 countLeng(char* ST);
