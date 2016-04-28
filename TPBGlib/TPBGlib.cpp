@@ -32,9 +32,9 @@ namespace TPBG
 		return spisok[k];
 	}
 
-	
+
 	char* encoderVigener(char* textPlain, //Plain text/незашифрованный текст
-							char* key) { //key/ключ
+		char* key) { //key/ключ
 
 		_int64 textLeng = countLeng(textPlain);//text's length/длина текста  
 		_int64 keyLeng = countLeng(key);//key's length/длина ключа
@@ -57,9 +57,9 @@ namespace TPBG
 		return textChiper;// return pointer on encrypted text
 	}
 
-	
+
 	char* decoderVigener(char* textChiper, //encrypted text/зашифрованный текст
-							char* key) {
+		char* key) {
 
 		_int64 textLeng = countLeng(textChiper);//text's length/длина текста  
 		_int64 keyLeng = countLeng(key);//key's length/длина ключа
@@ -83,13 +83,6 @@ namespace TPBG
 		return textPlain;//return pointer on decrypted text
 	}
 
-
-	/*
-	UK this function is encode text with using the Caesar cipher
-	RU эта функция шифрует тест с помощью шифра Цезаря
-	FR cette fonction est encodage du texte en utilisant le chiffrement C?sar
-	DE Diese Funktion verschlusselt Text mit dem Caesar-Chiffre
-	*/
 	char* encoderCaesar(char* textPlain, //Plain text
 		int key) {
 
@@ -106,12 +99,7 @@ namespace TPBG
 		*(textChiper + textLeng) = '\0';
 		return textChiper;// return pointer on encrypted text
 	}
-	/*
-	UK this function is decode text with using the Caesar cipher
-	RU эта функция дешифрует тест с помощью шифра Цезаря
-	FR cette fonction est decodage du texte en utilisant le chiffrement C?sar
-	DE Diese Funktion entschlusselt Text mit dem Caesar-Chiffre
-	*/
+
 	char* decoderCaesar(char* textChiper, //encrypted text
 		int key) {
 
@@ -130,4 +118,18 @@ namespace TPBG
 		return textPlain;//return pointer on decrypted text
 	}
 
+
+	char* generatePassword(__int64 lengPassword) {
+
+		char* password = (char*)malloc(lengPassword + 1);
+		*(password + lengPassword) = '\0';
+		
+		srand(lengPassword);
+
+		for (int i = 0; i < lengPassword; i++) {
+			*(password+i)=spisok[rand()%spisokLeng];
+		}
+
+		return password;
+	}
 }
