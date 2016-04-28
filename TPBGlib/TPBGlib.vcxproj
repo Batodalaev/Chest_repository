@@ -138,10 +138,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MathFuncsLib.h" />
+    <ClInclude Include="TPBGlib.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MathFuncsLib.cpp" />
+    <ClCompile Include="TPBGlib.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

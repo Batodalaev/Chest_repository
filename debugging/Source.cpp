@@ -1,10 +1,10 @@
-//it is a first file in repozitory(may be)
-//libraries
+
 #include <malloc.h>
+
+
 using namespace std;
 
 _int64 countLeng(char* ST);
-void printString(char* ST);
 char findSimbolVigener(char symbolText, char symbolKey, bool trueforEncode);
 char* encoderVigener(char* textPlain, char* key);
 char* decoderVigener(char* textChiper, char* key);
@@ -21,10 +21,6 @@ char spisoksymbols[] = "!@#$%^&*()_ +;:<>,.-=";
 char spisok[] = " 1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ!@#$%^&*()_ +;:<>,.-=";
 __int64 spisokLeng = countLeng(spisok);
 
-/*
-UK fast algorithm for counting the line length
-RU быстрый подсчет длины строки
-*/
 _int64 countLeng(char* ST) {
 	char* UM = ST;
 	while (*UM != '\0') ++UM;
@@ -44,15 +40,7 @@ char findSimbolVigener(char symbolText, char symbolKey, bool isEncode) {
 
 	return spisok[k];
 }
-////////////////////////////////////////////////////////////////////
-/*
-UK this function is encode text
-RU эта функция шифрует текст
 
-the next texts is just to fun->
-FR cette fonction est encodage du texte
-DE Diese Funktion verschlusselt Text
-*/
 char* encoderVigener(char* textPlain, //Plain text/незашифрованный текст
 	char* key) { //key/ключ
 	
@@ -77,14 +65,6 @@ char* encoderVigener(char* textPlain, //Plain text/незашифрованный текст
 	return textChiper;// return pointer/возвращает указатель
 }
 
-/*
-UK this function is decode text
-RU эта функция дешифрует текст
-
-the next texts is just to fun->
-FR cette fonction est decodage du texte
-DE Diese Funktion entschlusselt Text
-*/
 char* decoderVigener(char* textChiper, //encrypted text/зашифрованный текст
 	char* key) { //key/ключ
 
