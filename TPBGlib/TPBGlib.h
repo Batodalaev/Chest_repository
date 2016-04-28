@@ -10,7 +10,7 @@ namespace TPBG
 	
 	spisok[0]==' '; because 149%149=0
 	*/
-	static char spisok[] = " 1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ!@#$%^&*()_ +;:<>,.-=";
+	static char spisok[] = "=1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ!@#$%^&*()_ +;:<>,.-";
 	
 	/*
 	UK fast algorithm for counting the line length
@@ -24,23 +24,23 @@ namespace TPBG
 	*/
 	 static __int64 spisokLeng = countLeng(spisok);
 
+
 	/*
 	UK function find symbol in matrix of chiper of Vigener
 	RU функция поиска символа в матрице шифра Виженера
 	*/
-	char findSimbolVigener(char symbolText, char symbolKey, bool trueforEncode);
-		
+	char findSimbolVigener(char symbolText, char symbolKey, bool trueforEncode);	
 	/*
 	UK this function is encode text
 	RU эта функция шифрует текст
 	*/
 	char* encoderVigener(char* textPlain, char* key);
-
 	/*
 	UK this function is decode text
 	RU эта функция дешифрует текст
 	*/
 	char* decoderVigener(char* textChiper, char* key);
+
 
 	/*
 	UK this function is encode text with using the Caesar cipher
@@ -48,17 +48,19 @@ namespace TPBG
 	only big english letters
 	*/
 	char* encoderCaesar(char* textPlain, int key);
-
 	/*
 	UK this function is decode text with using the Caesar cipher
 	RU эта функция дешифрует тест с помощью шифра Цезаря
 	only big english letters
 	*/
 	char* decoderCaesar(char* textChiper, int key);
+
+
 	/*
 	UK It is the simple password's generator
 	RU простой генератор паролей
 	*/
 	char* generatePassword(__int64 lengPassword);
+
 
 }

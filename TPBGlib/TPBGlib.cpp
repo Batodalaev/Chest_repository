@@ -3,10 +3,15 @@
 // post-build command: lib MathFuncsLib.obj
 
 #include "TPBGlib.h"
-
-#include <stdexcept>
 #include <ctime> //for srand(time(0)) in generatePassword()
+#include <fstream>
+#include <stdexcept>
+
 using namespace std;
+
+ifstream fin;//for load passwords in file
+ofstream fout;//for save passwords in file
+static char nameFile[] = "logs.tpbg";
 
 namespace TPBG
 {
@@ -132,4 +137,61 @@ namespace TPBG
 
 		return password;
 	}
+
+	/*
+	UK save password in file
+	RU сохранение паролей в файл 
+	*/
+	int savePasswords(char** passwords) {
+
+		//add text in the file end/добавление в конце файла
+		fout.open(nameFile, ios_base::app);
+
+		if (fout.is_open()) {//если файл открыт
+			int i = 0;//number of passwords
+			while (*(passwords+i) != '\0') {
+				int j = 0;//number of symbols in passwords
+				while (*(*(passwords + i) + j) != '\0') {
+					fout << *(*(passwords + i)+j);
+					j++;
+				}
+				fout << ' ';
+				i++;
+			}
+			
+
+			fout.close();
+			if (!fout.is_open) return 0;
+			else return 2;
+		}
+		else return 1;
+	};
+
+	/*
+	UK load passwords from file
+	RU загрузка паролей из файла 
+	*/
+	char** loadPasswords() {
+		
+		char** inStr;
+
+		fin.open(nameFile);
+		if (fin.is_open()) {//если файл открыт
+			
+			/*while (!fin.eof()) {
+				fin >> **inStr;
+			};*/
+
+			fin.close();
+			if (!fin.is_open()) return inStr;
+			else return 0;
+		}
+		else return 0;
+	};
+
+
+
+
+
+
 }
