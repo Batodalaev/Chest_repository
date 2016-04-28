@@ -1,6 +1,8 @@
 #pragma once
-// MathFuncsLib.h
 
+#include <ctime> //for srand(time(0)) in generatePassword()
+#include <fstream> //for save/load in/from file
+#include <stdexcept>
 namespace TPBG
 {
 	
@@ -62,5 +64,15 @@ namespace TPBG
 	*/
 	char* generatePassword(__int64 lengPassword);
 
+	/*
+	UK save password in file
+	RU сохранение паролей в файл
+	*/
+	bool isSavedPasswords(char** passwords);
 
+	/*
+	UK load passwords from file
+	RU загрузка паролей из файла
+	*/
+	char** loadPasswords();
 }

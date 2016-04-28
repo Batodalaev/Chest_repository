@@ -1,11 +1,7 @@
-// MathFuncsLib.cpp
-// compile with: cl /c /EHsc MathFuncsLib.cpp
-// post-build command: lib MathFuncsLib.obj
+
+
 
 #include "TPBGlib.h"
-#include <ctime> //for srand(time(0)) in generatePassword()
-#include <fstream>
-#include <stdexcept>
 
 using namespace std;
 
@@ -22,6 +18,7 @@ namespace TPBG
 		return n;
 	}
 
+
 	char findSimbolVigener(char symbolText, char symbolKey, bool isEncode) {
 		int i = 0;
 		int j = 0;
@@ -36,7 +33,6 @@ namespace TPBG
 
 		return spisok[k];
 	}
-
 
 	char* encoderVigener(char* textPlain, //Plain text/незашифрованный текст
 		char* key) { //key/ключ
@@ -62,7 +58,6 @@ namespace TPBG
 		return textChiper;// return pointer on encrypted text
 	}
 
-
 	char* decoderVigener(char* textChiper, //encrypted text/зашифрованный текст
 		char* key) {
 
@@ -87,6 +82,7 @@ namespace TPBG
 		*(textPlain + textLeng) = '\0';
 		return textPlain;//return pointer on decrypted text
 	}
+
 
 	char* encoderCaesar(char* textPlain, //Plain text
 		int key) {
@@ -138,16 +134,15 @@ namespace TPBG
 		return password;
 	}
 
-	/*
-	UK save password in file
-	RU сохранение паролей в файл 
-	*/
-	int savePasswords(char** passwords) {
+
+	bool isSavedPasswords(char** passwords) {
 
 		//add text in the file end/добавление в конце файла
 		fout.open(nameFile, ios_base::app);
 
-		if (fout.is_open()) {//если файл открыт
+		//if file is open/если файл открыт
+		if (fout.is_open()) {
+			
 			int i = 0;//number of passwords
 			while (*(passwords+i) != '\0') {
 				int j = 0;//number of symbols in passwords
@@ -159,34 +154,23 @@ namespace TPBG
 				i++;
 			}
 			
-
 			fout.close();
-			if (!fout.is_open) return 0;
-			else return 2;
-		}
-		else return 1;
+			if (!fout.is_open) return true;
+		};
+		return false;
 	};
 
-	/*
-	UK load passwords from file
-	RU загрузка паролей из файла 
-	*/
 	char** loadPasswords() {
-		
-		char** inStr;
-
+		char** passwords;
 		fin.open(nameFile);
-		if (fin.is_open()) {//если файл открыт
-			
-			/*while (!fin.eof()) {
-				fin >> **inStr;
-			};*/
 
+		//if file is open/если файл открыт
+		if (fin.is_open()) {
+			
 			fin.close();
-			if (!fin.is_open()) return inStr;
-			else return 0;
-		}
-		else return 0;
+			if (!fin.is_open()) return passwords;
+		};
+		return 0;
 	};
 
 
