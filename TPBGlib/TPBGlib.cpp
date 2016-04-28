@@ -10,7 +10,7 @@ using namespace std;
 
 namespace TPBG
 {
-	_int64 countLeng(char* ST) {
+	__int64 countLeng(char* ST) {
 		char* UM = ST;
 		while (*UM != '\0') ++UM;
 		_int64 n = (UM - ST);

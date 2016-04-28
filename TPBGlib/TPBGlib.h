@@ -4,21 +4,21 @@
 namespace TPBG
 {
 	// spisok[0]==' '; because 149%149=0
-	char spisok[] = " 1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ!@#$%^&*()_ +;:<>,.-=";
+	static char spisok[] = " 1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ!@#$%^&*()_ +;:<>,.-=";
 	
 
 	/*
 	UK fast algorithm for counting the line length
 	RU быстрый подсчет длины строки
 	*/
-	_int64 countLeng(char* ST);
+	 _int64 countLeng(char* ST);
 
 
 	/*
 	UK length of spisok[]
 	RU длина списка
 	*/
-	__int64 spisokLeng = countLeng(spisok);
+	 static __int64 spisokLeng = countLeng(spisok);
 	/*
 	UK function find symbol in matrix of chiper of Vigener
 	RU функция поиска символа в матрице шифра Виженера
