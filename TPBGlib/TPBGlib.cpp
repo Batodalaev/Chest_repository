@@ -5,7 +5,7 @@
 #include "TPBGlib.h"
 
 #include <stdexcept>
-
+#include <ctime> //for srand(time(0)) in generatePassword()
 using namespace std;
 
 namespace TPBG
@@ -124,7 +124,7 @@ namespace TPBG
 		char* password = (char*)malloc(lengPassword + 1);
 		*(password + lengPassword) = '\0';
 		
-		srand(lengPassword);
+		srand(time(0));//in <ctime>
 
 		for (int i = 0; i < lengPassword; i++) {
 			*(password+i)=spisok[rand()%spisokLeng];

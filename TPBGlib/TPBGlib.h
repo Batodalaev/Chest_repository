@@ -5,8 +5,8 @@ namespace TPBG
 {
 	
 	/*
-	UK
-	RU 
+	UK It's symbols, which he can encoding
+	RU Символы, которые можно шифровать
 	
 	spisok[0]==' '; because 149%149=0
 	*/
@@ -55,4 +55,10 @@ namespace TPBG
 	only big english letters
 	*/
 	char* decoderCaesar(char* textChiper, int key);
+	/*
+	UK It is the simple password's generator
+	RU простой генератор паролей
+	*/
+	char* generatePassword(__int64 lengPassword);
+
 }
