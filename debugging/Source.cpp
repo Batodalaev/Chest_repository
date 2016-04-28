@@ -1,15 +1,12 @@
 //it is a first file in repozitory(may be)
 //libraries
-#include <iostream>
-#include <stdlib.h>
+#include <malloc.h>
 
 using namespace std;
 
 _int64 countLeng(char* ST);
 void printString(char* ST);
-char findsymbolinMatrixVigener(char symbolText, char symbolKey, bool trueforEncode);
-char* encoderCaesar(char* textPlain, int key);
-char* decoderCaesar(char* textChiper, int key);
+char findSimbolVigener(char symbolText, char symbolKey, bool trueforEncode);
 char* encoderVigener(char* textPlain, char* key);
 char* decoderVigener(char* textChiper, char* key);
 /*
@@ -23,7 +20,7 @@ char spisoksymbols[] = "!@#$%^&*()_ +;:<>,.-=";
 
 // spisok[0]=='='; because 148%148=0
 char spisok[] = "=1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ!@#$%^&*()_ +;:<>,.-";
-int spisokLeng = countLeng(spisok);
+__int64 spisokLeng = countLeng(spisok);
 
 /*
 UK fast algorithm for counting the line length
@@ -36,19 +33,7 @@ _int64 countLeng(char* ST) {
 	return n;
 }
 
-/* 
-UK print in console
-RU выводит в консоль
-*/
-void printString(char* ST) {
-	char* UM = ST;
-	while (*UM != '\0') {
-		cout << *UM;
-		++UM;
-	};
-}
-
-char findsymbolinMatrixVigener(char symbolText, char symbolKey, bool isEncode) {
+char findSimbolVigener(char symbolText, char symbolKey, bool isEncode) {
 	int i = 0;
 	int j = 0;
 	int k = 0;
@@ -60,56 +45,6 @@ char findsymbolinMatrixVigener(char symbolText, char symbolKey, bool isEncode) {
 	return spisok[k];
 }
 ////////////////////////////////////////////////////////////////////
-/*
-UK this function is encode text with using the Caesar cipher
-RU эта функция шифрует текст с помощью шифра Цезаря
-
-the next texts is just to fun->
-FR cette fonction est encodage du texte en utilisant le chiffrement C?sar
-DE Diese Funktion verschlusselt Text mit dem Caesar-Chiffre
-*/
-char* encoderCaesar(char* textPlain, //Plain text/незашифрованный текст
-						int key) { //key/ключ
-
-	int turnKey = key % 26;
-	_int64 textLeng = countLeng(textPlain);//text's length/длина текста  
-	char* textChiper = (char*)malloc(textLeng + 1);// encrypted text/зашифрованный текст
-
-	for (unsigned int i = 0; i < textLeng; i++) {
-		*(textChiper + i) = *(textPlain + i) + turnKey;
-		if (*(textChiper + i) > 'Z') {
-			*(textChiper + i) -= 26;
-		}
-	}
-	*(textChiper + textLeng) = '\0';
-	return textChiper;// return pointer/возвращает указатель
-}
-/*
-UK this function is decode text with using the Caesar cipher
-RU эта функция дешифрует текст с помощью шифра Цезаря
-
-the next texts is just to fun->
-FR cette fonction est decodage du texte en utilisant le chiffrement C?sar
-DE Diese Funktion entschlusselt Text mit dem Caesar-Chiffre
-*/
-char* decoderCaesar(char* textChiper, //encrypted text/зашифрованный текст
-						int key) { //key/ключ 
-
-	int turnKey = key % 26;
-	_int64 textLeng = countLeng(textChiper);//text's length/длина текста  
-	char* textPlain = (char*)malloc(textLeng + 1);// encrypted text/зашифрованный текст
-	
-	for (unsigned int i = 0; i < textLeng; i++) {
-		*(textPlain + i) = *(textChiper + i) - turnKey;
-		if (*(textPlain + i) < 'A') {
-			*(textPlain + i) += 26;
-		}
-	}
-
-	*(textPlain + textLeng) = '\0';
-	return textPlain;//требуются правки/require edit
-}
-///////////////////////////////////////////////////////////////////////////////////////
 /*
 UK this function is encode text
 RU эта функция шифрует текст
@@ -124,13 +59,15 @@ char* encoderVigener(char* textPlain, //Plain text/незашифрованный текст
 	_int64 textLeng = countLeng(textPlain);//text's length/длина текста  
 	_int64 keyLeng = countLeng(key);//key's length/длина ключа
 	char* textChiper = (char*)malloc(textLeng + 1);// encrypted text/зашифрованный текст
-	char* keykey = (char*)malloc(textLeng+1);
+	char* keykey = (char*)malloc(textLeng+1); //extended key/расширенный ключ
 
-	for (int i = 0; i < textLeng; i++) {
+	/*length(keykey)==textLeng/длина ключа равна длине сообщения*/
+	for (__int64 i = 0; i < textLeng; i++) {
 		*(keykey + i) = *(key + i%keyLeng);
 	}
-	for (unsigned int i = 0; i < textLeng; i++) {
-		*(textChiper + i) = findsymbolinMatrixVigener(*(textPlain + i), *(keykey + i), 1);
+
+	for (__int64 i = 0; i < textLeng; i++) {
+		*(textChiper + i) = findSimbolVigener(*(textPlain + i), *(keykey + i), 1);
 	}
 
 	free(keykey);//clear memory
@@ -153,14 +90,17 @@ char* decoderVigener(char* textChiper, //encrypted text/зашифрованный текст
 
 	_int64 textLeng = countLeng(textChiper);//text's length/длина текста  
 	_int64 keyLeng = countLeng(key);//key's length/длина ключа
+	
 	char* textPlain = (char*)malloc(textLeng + 1);// encrypted text/зашифрованный текст
-	char* keykey = (char*)malloc(textLeng + 1);
+	char* keykey = (char*)malloc(textLeng + 1); //extended key/расширенный ключ
 
-	for (int i = 0; i < textLeng; i++) {
+	/*length(keykey)==textLeng/длина ключа равна длине сообщения*/
+	for (__int64 i = 0; i < textLeng; i++) {
 		*(keykey + i) = *(key + i%keyLeng);
 	}
-	for (unsigned int i = 0; i < textLeng; i++) {
-		*(textPlain + i) = findsymbolinMatrixVigener(*(textChiper + i), *(keykey + i), 0);
+
+	for (__int64 i = 0; i < textLeng; i++) {
+		*(textPlain + i) = findSimbolVigener(*(textChiper + i), *(keykey + i), 0);
 	}
 
 	free(keykey);//clear memory
@@ -170,29 +110,18 @@ char* decoderVigener(char* textChiper, //encrypted text/зашифрованный текст
 	*(textPlain + textLeng) = '\0';
 	return textPlain;//требуются правки/require edit
 }
-
-int main()
+/////////////////////////////////////////////////////////////////////////////////
+int main(char* text,char* result,char* key,bool isEncode)
 {
- char textInput[101];
- char key[101];
- char* chiper;
- char*  unchiper;
+	//setlocale(LC_ALL, "Russian");
+	long long textLeng = countLeng(text);
+	result = (char*)malloc(textLeng + 1);
+	*(result + textLeng) = '\0';
 
- cout << "Please, intput only big english letters" << endl
-	 <<"Please, input text, which you want to encode:"<< endl;
- cin >> textInput;
- cout << "Please, input key:" << endl;
- cin >> key;
+	if (isEncode) {
+		result = encoderVigener(text, key);
+	}
+	else result = decoderVigener(text, key);
 
- chiper = encoderVigener(textInput, key);
- cout	<< "Encrypted text:";
- printString(chiper);
- cout << endl;
- unchiper = decoderVigener(chiper, key);
- cout << "Decrypted text:";
- printString(unchiper);
- cout << endl;
-
- system("pause");
 	return 0;
 }
