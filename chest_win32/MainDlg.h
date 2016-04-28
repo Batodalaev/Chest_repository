@@ -1,5 +1,6 @@
 #pragma once
 #include "DlgBoxTemPlate.h"
+#include "resource.h"
 class MainDlg : public DlgBoxTemPlate
 {
 public:
