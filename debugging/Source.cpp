@@ -18,8 +18,8 @@ char spisokRUS[] = "ÀÁÂÃÄÅ¨ÆÇÈÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞß";
 char spisoksymbols[] = "!@#$%^&*()_ +;:<>,.-=";
 */
 
-// spisok[0]=='='; because 148%148=0
-char spisok[] = "=1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZàáâãäå¸æçèéêëìíîïğñòóôõö÷øùúûüışÿÀÁÂÃÄÅ¨ÆÇÈÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞß!@#$%^&*()_ +;:<>,.-";
+// spisok[0]==' '; because 149%149=0
+char spisok[] = " 1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZàáâãäå¸æçèéêëìíîïğñòóôõö÷øùúûüışÿÀÁÂÃÄÅ¨ÆÇÈÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞß!@#$%^&*()_ +;:<>,.-=";
 __int64 spisokLeng = countLeng(spisok);
 
 /*
@@ -39,7 +39,8 @@ char findSimbolVigener(char symbolText, char symbolKey, bool isEncode) {
 	int k = 0;
 	while (symbolText != *(spisok+i))i++;
 	while (symbolKey != *(spisok + j))j++;
-	if (isEncode)k=(i+j)%spisokLeng;
+
+	if (isEncode) k = (i + j) % spisokLeng;
 	else k = (i - j) % spisokLeng;
 
 	return spisok[k];
