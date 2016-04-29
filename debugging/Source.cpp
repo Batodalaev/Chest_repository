@@ -14,7 +14,7 @@ RU вывод в консоль
 void printString(char* ST) {
 	char* UM = ST;
 	while (*UM != '\0') {
-		cout << *UM;
+		cout.put(*UM);
 		++UM;
 	};
 }
