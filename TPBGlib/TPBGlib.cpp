@@ -39,6 +39,7 @@ namespace TPBG
 
 		_int64 textLeng = countLeng(textPlain);//text's length/длина текста  
 		_int64 keyLeng = countLeng(key);//key's length/длина ключа
+
 		char* textChiper = (char*)malloc(textLeng + 1);// encrypted text/зашифрованный текст
 		char* keykey = (char*)malloc(textLeng + 1); //extended key/расширенный ключ
 
@@ -124,9 +125,9 @@ namespace TPBG
 
 		char* password = (char*)malloc(lengPassword + 1);
 		*(password + lengPassword) = '\0';
-		
+#pragma warning (disable:4244)		
 		srand(time(0));//in <ctime>
-
+#pragma warning (once:4244)
 		for (int i = 0; i < lengPassword; i++) {
 			*(password+i)=spisok[rand()%spisokLeng];
 		}
@@ -155,18 +156,23 @@ namespace TPBG
 			}
 			
 			fout.close();
-			if (!fout.is_open) return true;
+			if (!fout.is_open()) return true;
 		};
 		return false;
 	};
 
 	char** loadPasswords() {
-		char** passwords;
 		fin.open(nameFile);
 
 		//if file is open/если файл открыт
 		if (fin.is_open()) {
-			
+			size_t stepnumber = 100;
+			size_t stepsymbol = 10;
+			int i = 0;
+			char** passwords = (char**)malloc(stepnumber+1);
+
+
+
 			fin.close();
 			if (!fin.is_open()) return passwords;
 		};
