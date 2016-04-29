@@ -26,8 +26,7 @@ int main()
 	char* chiper;
 	char*  unchiper;
 
-	cout << "Please, input text without russian symbols" << endl
-		<< "Please, input text, which you want to encode:" << endl;
+	cout << "Please, input text without russian symbols" << endl;
 	cin >> textInput;
 	cout << "Please, input key:" << endl;
 	cin >> key;
