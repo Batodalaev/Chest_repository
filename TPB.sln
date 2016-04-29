@@ -7,8 +7,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "debugging", "debugging\debu
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TPBGlib", "TPBGlib\TPBGlib.vcxproj", "{FA33DD2D-EFA3-494C-900E-356691533BCB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chest_win32", "chest_win32\chest_win32.vcxproj", "{BD6E99A7-2E05-47BC-BC3C-51F150992B79}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -39,16 +37,6 @@ Global
 		{FA33DD2D-EFA3-494C-900E-356691533BCB}.Release|x64.Build.0 = Release|x64
 		{FA33DD2D-EFA3-494C-900E-356691533BCB}.Release|x86.ActiveCfg = Release|Win32
 		{FA33DD2D-EFA3-494C-900E-356691533BCB}.Release|x86.Build.0 = Release|Win32
-		{BD6E99A7-2E05-47BC-BC3C-51F150992B79}.Debug|ARM.ActiveCfg = Debug|Win32
-		{BD6E99A7-2E05-47BC-BC3C-51F150992B79}.Debug|x64.ActiveCfg = Debug|x64
-		{BD6E99A7-2E05-47BC-BC3C-51F150992B79}.Debug|x64.Build.0 = Debug|x64
-		{BD6E99A7-2E05-47BC-BC3C-51F150992B79}.Debug|x86.ActiveCfg = Debug|Win32
-		{BD6E99A7-2E05-47BC-BC3C-51F150992B79}.Debug|x86.Build.0 = Debug|Win32
-		{BD6E99A7-2E05-47BC-BC3C-51F150992B79}.Release|ARM.ActiveCfg = Release|Win32
-		{BD6E99A7-2E05-47BC-BC3C-51F150992B79}.Release|x64.ActiveCfg = Release|x64
-		{BD6E99A7-2E05-47BC-BC3C-51F150992B79}.Release|x64.Build.0 = Release|x64
-		{BD6E99A7-2E05-47BC-BC3C-51F150992B79}.Release|x86.ActiveCfg = Release|Win32
-		{BD6E99A7-2E05-47BC-BC3C-51F150992B79}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
