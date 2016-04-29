@@ -32,7 +32,7 @@ namespace TPBG
 	UK function find symbol in matrix of chiper of Vigener
 	RU функция поиска символа в матрице шифра Виженера
 	*/
-	char findSimbolVigener(char symbolText, char symbolKey, bool trueforEncode);	
+	char findSimbolVigener(char symbolText, char symbolKey, bool isEncode);	
 	/*
 	UK this function is encode text
 	RU эта функция шифрует текст

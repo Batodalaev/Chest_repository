@@ -7,7 +7,7 @@ using namespace std;
 
 ifstream fin;//for load passwords in file
 ofstream fout;//for save passwords in file
-static char nameFile[] = "logs.tpbg";
+static char nameFile[] = "passwords.tpbg";
 
 namespace TPBG
 {
@@ -127,11 +127,11 @@ namespace TPBG
 
 		char* password = (char*)malloc(lengPassword + 1);
 		*(password + lengPassword) = '\0';
-#pragma warning (disable:4244)		
+//#pragma warning (disable:4244)		
 		srand(time(0));//in <ctime>
-#pragma warning (once:4244)
+//#pragma warning (once:4244)
 		for (int i = 0; i < lengPassword; i++) {
-			*(password+i)=spisok[rand()%spisokLeng];
+			*(password+i)=spisok[(rand()*rand())%spisokLeng];
 		}
 
 		return password;
@@ -145,15 +145,14 @@ namespace TPBG
 
 		//if file is open/если файл открыт
 		if (fout.is_open()) {
-			
 			int i = 0;//number of passwords
 			while (*(passwords+i) != '\0') {
-				int j = 0;//number of symbols in passwords
+				int j = 0;//number of symbols in password
 				while (*(*(passwords + i) + j) != '\0') {
-					fout << *(*(passwords + i)+j);
+					fout.put(*(*(passwords + i) + j));
 					j++;
 				}
-				fout << ' ';
+				fout.put(' ');
 				i++;
 			}
 			
@@ -168,12 +167,51 @@ namespace TPBG
 
 		//if file is open/если файл открыт
 		if (fin.is_open()) {
-			size_t stepnumber = 100;
+			size_t stepnumber = 10;
 			size_t stepsymbol = 10;
-			int i = 0;
-			char** passwords = (char**)malloc(stepnumber+1);
+			size_t maxnumberpasswords = stepnumber;
+			size_t currentpassword = 0;
+			char** passwords = (char**)malloc(maxnumberpasswords+1);
+			bool isEnd = false;
 
 
+			while (!isEnd) {
+				/*increase the available memory*/
+				if (currentpassword+1 == maxnumberpasswords) {
+					maxnumberpasswords += stepnumber;
+					passwords = (char**)realloc(passwords,maxnumberpasswords+1);
+				}
+
+				size_t maxnumbersymbols = stepsymbol;
+				size_t currentsymbol = 0;
+				*(passwords+currentpassword) = (char*)malloc(maxnumbersymbols + 1);
+
+				char bufsym;
+				fin.get(bufsym);
+				if (bufsym != EOF) {
+					while (bufsym != ' ') {
+						/*increase the available memory*/
+						if (currentsymbol + 1 == maxnumbersymbols) {
+							maxnumbersymbols += stepsymbol;
+
+							*(passwords + currentpassword) =
+								(char*)realloc(
+									*(passwords + currentpassword),
+									maxnumbersymbols + 1);
+						}
+
+						*(*(passwords + currentpassword) + currentsymbol) = bufsym;
+						currentsymbol++;
+
+						fin.get(bufsym);//end while if bufsym==' '
+					}
+					currentpassword++;
+				}
+				else {
+					*(passwords + currentpassword) = '\0';
+					isEnd = true;
+				}
+			}
 
 			fin.close();
 			if (!fin.is_open()) return passwords;
