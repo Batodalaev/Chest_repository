@@ -28,8 +28,10 @@ namespace TPBG
 		while (symbolKey != *(spisok + j))j++;
 
 		if (isEncode) k = (i + j) % spisokLeng;
-
 		else k = (i - j) % spisokLeng;
+		
+		//when i<j
+		if (k < 0)k += spisokLeng;
 
 		return spisok[k];
 	}
