@@ -11,9 +11,10 @@ namespace TPBG
 	RU Ñטלגמכû, ךמעמנûו למזםמ רטפנמגאעü
 	
 	spisok[0]==' '; because 149%149=0
-	*/
-	static char spisok[] = "=1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZאבגדהו¸זחטיךכלםמןנסעףפץצקרשתûü‎‏ÿÀÁÂÃÄÅ¨ÆÇÈÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞ‗!@#$%^&*()_ +;:<>,.-";
 	
+	static char spisok[] = "=1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZאבגדהו¸זחטיךכלםמןנסעףפץצקרשתûü‎‏ÿÀÁÂÃÄÅ¨ÆÇÈÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞ‗";
+	*/
+	static char spisok[] = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_ +;:<>,.-";
 	/*
 	UK fast algorithm for counting the line length
 	RU בûסענûי ןמהסקוע הכטםû סענמךט

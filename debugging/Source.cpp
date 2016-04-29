@@ -2,12 +2,9 @@
 
 
 using namespace std;
-
 #include <malloc.h>
-
 #include <iostream>
 #include <stdlib.h>
-
 #include "TPBGlib.h"
 
 /*
