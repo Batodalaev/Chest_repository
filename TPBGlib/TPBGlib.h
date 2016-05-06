@@ -64,6 +64,11 @@ namespace TPBG
 	RU простой генератор паролей
 	*/
 	char* generatePassword(__int64 lengPassword);
+	/*
+	UK file name
+	RU имя файла
+	*/
+	static char nameFile[] = "passwords.tpbg";
 
 	/*
 	UK save password in file

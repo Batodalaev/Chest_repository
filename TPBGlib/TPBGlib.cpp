@@ -7,7 +7,6 @@ using namespace std;
 
 ifstream fin;//for load passwords in file
 ofstream fout;//for save passwords in file
-static char nameFile[] = "passwords.tpbg";
 
 namespace TPBG
 {
