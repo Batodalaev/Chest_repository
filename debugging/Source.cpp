@@ -25,21 +25,38 @@ int main()
 	char key[101];
 	char* chiper;
 	char*  unchiper;
-
-	cout << "Please, input text without russian symbols" << endl;
+	int isencode;
+	cout << "If you want to encrypt text, please input 0" << endl <<
+		"If you want to decrypt text, please input 1" << endl;
+	cin >> isencode;
+	cout << "Please, input text(A..Z):" << endl;
 	cin >> textInput;
-	cout << "Please, input key:" << endl;
-	cin >> key;
+	if (isencode == 0) {
 
-	chiper = TPBG::encoderVigener(textInput, key);
-	cout << "Encrypted text:";
-	printString(chiper);
-	cout << endl;
+		cout << "Please, input key(A..Z):" << endl;
+		cin >> key;
+		chiper = TPBG::encoderVigener(textInput, key);
+		cout << "Encrypted text:" << endl;
+		printString(chiper);
+		cout << endl;
+	}
+	else{ 
+		bool isFind = false;
+		char response;
+		while (!isFind) {
+			cout << "Please, input key(A..Z):" << endl;
+			cin >> key;
+			unchiper = TPBG::decoderVigener(textInput, key);
+			cout << "Decrypted text:" << endl;
+			printString(unchiper);
+			cout << endl<<
+				"Do you find response?"<<endl<<
+				"If you  find response input 0 else input any symbol"<<endl;
+			cin >> response;
+			if (response == '0')isFind = true;
 
-	unchiper = TPBG::decoderVigener(chiper, key);
-	cout << "Decrypted text:";
-	printString(unchiper);
-	cout << endl;
+		}
+	}
 
 	system("pause");
 	return 0;
